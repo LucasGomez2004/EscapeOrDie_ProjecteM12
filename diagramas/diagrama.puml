@@ -1,0 +1,72 @@
+@startuml
+skin rose
+
+hide circle
+left to right direction
+title ESCAPE ROOM
+
+
+class ESCAPE_ROOM {
+    Nom
+    Localitat
+}
+
+class Usuaris{
+    id_Usuari
+    usuari 
+    contrasenya
+    rol
+}
+class Client{
+    id_Client
+    Nom
+    Cognoms
+    dataNeixamnet
+    dni 
+    FK:id_usuari
+    FK:id_reserva
+}
+class Empleat {
+    id_Empleat
+    Nom
+    Cognoms
+    dataNeixamnet
+    dni 
+    FK:id_usuari
+    FK:id_Rol_Empleat
+}
+class rol_empleat{
+    id_Rol_Empleat
+    nom ("mantenimiento, limpieza, Secretaria")
+}
+class Tasca{
+    id_Tasca
+    dataTasca
+    descripcio
+    FK:id_Rol_Empleat
+    FK:id_Estat
+}
+class Estat {
+    id_Estat
+    descripcio
+}
+
+class Reserva {
+    - id_reserva
+    - localitat
+    - dia
+    - hora
+    + getPreu(): double
+}
+
+
+
+
+ESCAPE_ROOM "1" ---> "0..N" Usuaris
+Usuaris "1" ---> "0..1" Client
+Usuaris "1" ---> "0..1" Empleat
+Empleat "0..N" ---> "1" rol_empleat
+rol_empleat "0..N" ---> "0..N" Tasca
+Tasca "0..N" ---> "1" Estat
+Client "1" --> "0..N" Reserva
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+skinparam actor {
+    BackgroundColor DarkSeaGreen
+    BorderColor Black
+}
+skinparam rectangle{
+    BorderColor Black
+}
+
+actor "Cliente" as Cliente
+actor "Administrador" as Admin
+
+rectangle "Casos de Uso" {
+    Cliente --> (Registrar Usuario)
+    Cliente --> (Iniciar Sesión)
+    Cliente --> (Cerrar Sesión)
+    Cliente --> (Reservar Partida)
+    Cliente --> (Cancelar Reserva)
+    Cliente --> (Consultar Reservas)
+    Cliente --> (Consultar Estado de Tarea)
+
+    Admin --> (Gestionar Empleados)
+    Admin --> (Asignar Tareas a Empleados)
+    Admin --> (Registrar Estado de Tarea)
+    Admin --> (Generar Informes)
+    Admin --> (Gestionar Precios)
+    Admin --> (Consultar Estadísticas)
+    Admin --> (Gestionar Roles de Empleado)
+    Admin --> (Gestionar Estados de Tarea)
+    Admin --> (Gestionar Escape Rooms)
+    Admin --> (Enviar Notificaciones)
+}
+@enduml
